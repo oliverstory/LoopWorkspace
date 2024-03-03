@@ -45,16 +45,14 @@ jobs:
           low_carb_limit \
           override_sens \
           now_line \
-          algorithm_experiments
+          2002 \
+          algorithm_experiments \
+          testflight_expiration_warning
 
 
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
 
-
-          # Submodule Loop patches:
-          # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
-          curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
 
 
       
