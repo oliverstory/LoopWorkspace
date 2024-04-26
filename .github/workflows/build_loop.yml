@@ -250,6 +250,7 @@ jobs:
           
           # patch for dev:
           curl https://github.com/oliverstory/Loop/commit/d53f9d94b382e9b0780a39855a29862aa874e651.patch | git apply -v --directory=Loop
+          curl https://github.com/oliverstory/Loop/commit/fff8a7d532d680060005bdfa904ef0f66c6123d0.patch | git apply -v --directory=Loop
 
           
           
