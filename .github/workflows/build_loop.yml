@@ -249,8 +249,7 @@ jobs:
           # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift: Address glucose chart display discrepancy
           
           # patch for dev:
-          curl https://github.com/oliverstory/Loop/commit/d53f9d94b382e9b0780a39855a29862aa874e651.patch | git apply -v --directory=Loop
-          curl https://github.com/oliverstory/Loop/commit/fff8a7d532d680060005bdfa904ef0f66c6123d0.patch | git apply -v --directory=Loop
+          curl https://github.com/oliverstory/Loop/commit/8c1f3a5e15b6c208edc5530fde9464c263bccc76.patch | git apply -v --directory=Loop
 
           
           
