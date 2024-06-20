@@ -267,10 +267,6 @@ jobs:
           curl https://github.com/oliverstory/Loop/commit/8c1f3a5e15b6c208edc5530fde9464c263bccc76.patch | git apply -v --directory=Loop
 
          
-          # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift: Address COB display discrepancy
-          curl https://github.com/oliverstory/Loop/commit/a3d04eac63d52fcce7b3afa68568465ee758195c.patch | git apply -v --directory=Loop
-          curl https://github.com/oliverstory/Loop/commit/9eebb8ac93999ef0b2d7ea4622c170136d4c4a6d.patch | git apply -v --directory=Loop
-          
           # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
           curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
    
