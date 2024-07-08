@@ -270,6 +270,9 @@ jobs:
           # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
           curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
    
+          # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift and Loop/Managers/LoopDataManager.swift: show yesterday's carb entries
+          curl https://github.com/oliverstory/Loop/commit/5b69a227d6585d539992754b68fed685753bbf02.patch | git apply -v --directory=Loop
+   
           
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
