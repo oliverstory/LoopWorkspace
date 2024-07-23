@@ -294,8 +294,11 @@ jobs:
 
           # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift: Address glucose chart display discrepancy
 
-          # patch for dev:
+          # patch for 3.4.1:
           curl https://github.com/oliverstory/Loop/commit/d53f9d94b382e9b0780a39855a29862aa874e651.patch | git apply -v --directory=Loop
+   
+          # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift and Loop/Managers/LoopDataManager.swift: show yesterday's carb entries
+          curl https://github.com/oliverstory/Loop/commit/5b69a227d6585d539992754b68fed685753bbf02.patch | git apply -v --directory=Loop
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
