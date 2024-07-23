@@ -277,6 +277,26 @@ jobs:
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
 
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          dexcom_upload_readings \
+          low_carb_limit \
+          override_sens \
+          now_line \
+          2002
+  
+          # Submodule Loop patches:
+          # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
+          curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
+
+          # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift: Address glucose chart display discrepancy
+
+          # patch for dev:
+          curl https://github.com/oliverstory/Loop/commit/d53f9d94b382e9b0780a39855a29862aa874e651.patch | git apply -v --directory=Loop
+
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: |
