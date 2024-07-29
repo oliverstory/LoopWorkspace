@@ -285,20 +285,22 @@ jobs:
           dexcom_upload_readings \
           low_carb_limit \
           override_sens \
+          2hlollipop \
+          meal_week \
           now_line \
           2002
   
           # Submodule Loop patches:
           # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
-          curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
+          #curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
 
           # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift: Address glucose chart display discrepancy
 
           # patch for 3.4.1:
-          curl https://github.com/oliverstory/Loop/commit/8c1f3a5e15b6c208edc5530fde9464c263bccc76.patch | git apply -v --directory=Loop
+          #curl https://github.com/oliverstory/Loop/commit/8c1f3a5e15b6c208edc5530fde9464c263bccc76.patch | git apply -v --directory=Loop
    
           # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift and Loop/Managers/LoopDataManager.swift: show yesterday's carb entries
-          curl https://github.com/oliverstory/Loop/commit/5b69a227d6585d539992754b68fed685753bbf02.patch | git apply -v --directory=Loop
+          #curl https://github.com/oliverstory/Loop/commit/5b69a227d6585d539992754b68fed685753bbf02.patch | git apply -v --directory=Loop
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
