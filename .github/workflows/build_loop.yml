@@ -304,7 +304,7 @@ jobs:
           #curl https://github.com/oliverstory/Loop/commit/5b69a227d6585d539992754b68fed685753bbf02.patch | git apply -v --directory=Loop
 
           # Loop: Loop/Loop.xcodeproj: remove macOS and appleVision from LoopUI, LoopCore, LoopTests
-          curl https://github.com/oliverstory/Loop/commit/5c3b01f7e302dca9b8bbb12fd42fdd40ed52d2c1 | git apply -v --directory=Loop
+          curl https://github.com/oliverstory/Loop/commit/5c3b01f7e302dca9b8bbb12fd42fdd40ed52d2c1.patch | git apply -v --directory=Loop
 
 
       # Patch Fastlane Match to not print tables
