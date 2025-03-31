@@ -287,11 +287,12 @@ jobs:
           low_carb_limit \
           override_sens \
           2hlollipop \
-          meal_week \
+          meal_days \
           now_line \
           negative_insulin \
           bolus_display \
-          2002
+          g7_scan \
+          profiles
   
           # Submodule Loop patches:
           # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
