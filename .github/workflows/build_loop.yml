@@ -297,8 +297,6 @@ jobs:
           meal_days \
           now_line \
           negative_insulin \
-          bolus_display \
-          g7_scan \
           profiles
   
           # Submodule Loop patches:
