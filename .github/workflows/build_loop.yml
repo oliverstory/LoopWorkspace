@@ -226,6 +226,10 @@ jobs:
           negative_insulin \
           profiles
   
+          # Submodule Loopkit patches
+          # MNK's change to how insulin is accounted for - as the sum of IOB effects times ISF for a period
+          curl https://patch-diff.githubusercontent.com/raw/LoopKit/LoopKit/pull/588.patch | git apply --directory=LoopKit -v --whitespace=fix
+          
           # Submodule Loop patches:
           # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
           #curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
