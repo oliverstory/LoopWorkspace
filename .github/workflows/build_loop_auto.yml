@@ -1,7 +1,11 @@
-name: 4. Build Loop Manual
-run-name: Build Loop Manual (${{ github.ref_name }})
+name: 4. Build Loop Auto 
+run-name: Build Loop Auto (${{ github.ref_name }})
 on:
   workflow_dispatch:
+  schedule:
+    # Check for updates every Sunday
+    #   Later logic builds if there are updates or if it is the 2nd Sunday of the month
+    - cron: "33 7 * * 0" # Sunday at UTC 7:33
 
 env:
   GH_PAT: ${{ secrets.GH_PAT }}
@@ -144,6 +148,30 @@ jobs:
             echo "is_second_instance=false" >> "$GITHUB_OUTPUT"
           fi
 
+  # When a scheduled run finds nothing new to build, cancel the run so it shows
+  # as "cancelled" instead of "success" — a green check should always mean a
+  # new build was made.
+  cancel_when_no_build:
+    needs: check_status
+    name: Cancel run when there is nothing to build
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    if: |
+      github.event_name == 'schedule' &&
+        !(vars.SCHEDULED_BUILD != 'false' && needs.check_status.outputs.IS_SECOND_IN_MONTH == 'true') &&
+        !(vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true')
+    steps:
+      - name: Cancel the run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Repository is up to date and no monthly build is due — cancelling this run so it is not reported as a successful build." >> "$GITHUB_STEP_SUMMARY"
+          gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+          # Keep the job alive until the cancellation lands, so the run ends as
+          # "cancelled" rather than completing successfully first.
+          sleep 300
+
   # Checks if Distribution certificate is present and valid, optionally nukes and
   # creates new certs if the repository variable ENABLE_NUKE_CERTS == 'true'
   # only run if a build is planned
@@ -206,39 +234,6 @@ jobs:
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
-
-          # The lines below add the customizations listed using the CustomizationSelect script
-          # The "\" is a continuation character 
-          #   the line following a "\" cannot be blank - that causes the Action to never complete
-          /bin/bash -c "$(curl -fsSL \
-          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
-          future_carbs_4h \
-          low_carb_limit \
-          override_sens \
-          2hlollipop \
-          meal_days \
-          now_line \
-          negative_insulin \
-          profiles
-  
-          # Submodule Loopkit patches
-          # MNK's change to how insulin is accounted for - as the sum of IOB effects times ISF for a period
-          curl https://patch-diff.githubusercontent.com/raw/LoopKit/LoopKit/pull/588.patch | git apply --directory=LoopKit -v --whitespace=fix
-
-          # patch to update DIA to 8 hours
-          curl https://github.com/oliverstory/LoopKit/commit/5ed9872a685a0bd9150d5a4f2d7d43e99cb4e831.patch | git apply -v --directory=LoopKit
-          
-          # Submodule Loop patches:
-          # Loop: LoopCore/LoopCoreConstants.swift: Easier fruit bolusing by changing default ‘fast’ absorption time to one hour
-          #curl https://github.com/oliverstory/Loop/commit/adfb6465c012f274904bcaae5b24d272b42a9e38.patch | git apply -v --directory=Loop
-
-          # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift: Address glucose chart display discrepancy
-
-          # patch for 3.4.1:
-          #curl https://github.com/oliverstory/Loop/commit/8c1f3a5e15b6c208edc5530fde9464c263bccc76.patch | git apply -v --directory=Loop
-   
-          # Loop: Loop/View Controllers/CarbAbsorptionViewController.swift and Loop/Managers/LoopDataManager.swift: show yesterday's carb entries
-          #curl https://github.com/oliverstory/Loop/commit/5b69a227d6585d539992754b68fed685753bbf02.patch | git apply -v --directory=Loop
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
