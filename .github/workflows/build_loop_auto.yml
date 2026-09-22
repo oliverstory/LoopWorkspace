@@ -234,6 +234,28 @@ jobs:
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
+          
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          future_carbs_4h \
+          low_carb_limit \
+          override_sens \
+          2hlollipop \
+          meal_days \
+          now_line \
+          negative_insulin \
+          profiles
+  
+          # Submodule Loopkit patches
+          # MNK's change to how insulin is accounted for - as the sum of IOB effects times ISF for a period
+          curl https://patch-diff.githubusercontent.com/raw/LoopKit/LoopKit/pull/588.patch | git apply --directory=LoopKit -v --whitespace=fix
+
+          # patch to update DIA to 8 hours
+          curl https://github.com/oliverstory/LoopKit/commit/5ed9872a685a0bd9150d5a4f2d7d43e99cb4e831.patch | git apply -v --directory=LoopKit
+
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
