@@ -257,7 +257,7 @@ jobs:
           #curl https://github.com/oliverstory/LoopKit/commit/5ed9872a685a0bd9150d5a4f2d7d43e99cb4e831.patch | git apply -v --directory=LoopKit
           
           # patch to update DIA to 7 hours
-          #curl https://github.com/oliverstory/LoopKit/commit/8227b3bd000e618773cf246f666333e1cf6a9fbf.patch | git apply -v --directory=LoopKit
+          curl https://github.com/oliverstory/LoopKit/commit/8227b3bd000e618773cf246f666333e1cf6a9fbf.patch | git apply -v --directory=LoopKit
 
 
       # Patch Fastlane Match to not print tables
