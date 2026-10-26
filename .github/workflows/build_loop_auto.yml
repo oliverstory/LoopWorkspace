@@ -244,7 +244,8 @@ jobs:
           low_carb_limit \
           override_sens \
           2hlollipop \
-          meal_days
+          meal_days \
+          profiles
           
           # Submodule LoopAlgorithm patches:
           
