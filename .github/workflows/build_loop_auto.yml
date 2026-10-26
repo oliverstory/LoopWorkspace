@@ -235,6 +235,18 @@ jobs:
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
 
+          # Submodule LoopAlgorithm patches:
+          
+          # patch to update DIA to 8 hours
+          curl https://github.com/oliverstory/LoopAlgorithm/commit/f940e15d8a20fa96dffc87a1f191b7f866bcf994.patch | git apply -v --directory=LoopAlgorithm
+
+          # patch to update DIA to 7.5 hours
+          #curl https://github.com/oliverstory/LoopAlgorithm/commit/45766abe1edf5164fada2c9bbe633cef4883ea9d.patch | git apply -v --directory=LoopAlgorithm
+          
+          # patch to update DIA to 7 hours
+          #curl https://github.com/oliverstory/LoopAlgorithm/commit/b546a5c173e540c19f944c0fd797440a0dbdf8c6.patch | git apply -v --directory=LoopAlgorithm
+
+
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: |
