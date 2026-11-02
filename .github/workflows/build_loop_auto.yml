@@ -250,7 +250,7 @@ jobs:
           # Submodule LoopAlgorithm patches:
           
           # patch to update DIA to 8 hours
-          curl https://github.com/oliverstory/LoopAlgorithm/commit/f940e15d8a20fa96dffc87a1f191b7f866bcf994.patch | git apply -v --directory=LoopAlgorithm
+          #curl https://github.com/oliverstory/LoopAlgorithm/commit/f940e15d8a20fa96dffc87a1f191b7f866bcf994.patch | git apply -v --directory=LoopAlgorithm
 
           # patch to update DIA to 7.5 hours
           #curl https://github.com/oliverstory/LoopAlgorithm/commit/45766abe1edf5164fada2c9bbe633cef4883ea9d.patch | git apply -v --directory=LoopAlgorithm
