@@ -4,13 +4,13 @@ Date: Sun, 8 Nov 2026 18:47:29 +1100
 Subject: [PATCH] 2 hour lollipop
 
 ---
- LoopCore/LoopCoreConstants.swift | 2 +-
+ Loop/LoopCore/LoopCoreConstants.swift | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/LoopCore/LoopCoreConstants.swift b/LoopCore/LoopCoreConstants.swift
+diff --git a/Loop/LoopCore/LoopCoreConstants.swift b/Loop/LoopCore/LoopCoreConstants.swift
 index 0b94b11e70..7c036ce919 100644
---- a/LoopCore/LoopCoreConstants.swift
-+++ b/LoopCore/LoopCoreConstants.swift
+--- a/Loop/LoopCore/LoopCoreConstants.swift
++++ b/Loop/LoopCore/LoopCoreConstants.swift
 @@ -21,7 +21,7 @@ public enum LoopCoreConstants {
      /// The longest a carb entry can take to absorb; matches LoopAlgorithm's limit
      public static let maximumCarbAbsorptionTimeInterval = TimeInterval(hours: 10)
