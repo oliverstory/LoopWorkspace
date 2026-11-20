@@ -200,6 +200,9 @@ jobs:
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
           #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
 
+          # Re-order therapy settings screen:
+          #curl https://github.com/LoopKit/LoopKit/commit/a1d1360571944924bb2f1bf5e82b686a33227b2d.patch | git apply --directory=LoopKit -v --whitespace=fix
+
           # Submodule xxxxx patches:
 
           # Add patches for customization of additional submodules by following the templates above, 
