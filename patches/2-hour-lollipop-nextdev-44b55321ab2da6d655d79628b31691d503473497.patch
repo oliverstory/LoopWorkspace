@@ -1,0 +1,22 @@
+From 44b55321ab2da6d655d79628b31691d503473497 Mon Sep 17 00:00:00 2001
+From: oliverstory <4920113+oliverstory@users.noreply.github.com>
+Date: Sun, 8 Nov 2026 18:47:29 +1100
+Subject: [PATCH] 2 hour lollipop
+
+---
+ LoopCore/LoopCoreConstants.swift | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/LoopCore/LoopCoreConstants.swift b/LoopCore/LoopCoreConstants.swift
+index 0b94b11e70..7c036ce919 100644
+--- a/LoopCore/LoopCoreConstants.swift
++++ b/LoopCore/LoopCoreConstants.swift
+@@ -21,7 +21,7 @@ public enum LoopCoreConstants {
+     /// The longest a carb entry can take to absorb; matches LoopAlgorithm's limit
+     public static let maximumCarbAbsorptionTimeInterval = TimeInterval(hours: 10)
+ 
+-    public static let defaultCarbAbsorptionTimes: DefaultAbsorptionTimes = (fast: .minutes(30), medium: .hours(3), slow: .hours(5))
++    public static let defaultCarbAbsorptionTimes: DefaultAbsorptionTimes = (fast: .hours(2), medium: .hours(3), slow: .hours(5))
+ 
+     /// How much historical glucose to include in a dosing decision
+     /// Somewhat arbitrary, but typical maximum visible in bolus glucose preview
