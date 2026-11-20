@@ -200,12 +200,33 @@ jobs:
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
           #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
 
+          # Re-order therapy settings screen:
+          #curl https://github.com/LoopKit/LoopKit/commit/a1d1360571944924bb2f1bf5e82b686a33227b2d.patch | git apply --directory=LoopKit -v --whitespace=fix
+
           # Submodule xxxxx patches:
 
           # Add patches for customization of additional submodules by following the templates above, 
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
+          
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          2hlollipop
+          
+          # Submodule LoopAlgorithm patches:
+          
+          # patch to update DIA to 8 hours
+          #curl https://github.com/oliverstory/LoopAlgorithm/commit/f940e15d8a20fa96dffc87a1f191b7f866bcf994.patch | git apply -v --directory=LoopAlgorithm
+
+          # patch to update DIA to 7.5 hours
+          #curl https://github.com/oliverstory/LoopAlgorithm/commit/45766abe1edf5164fada2c9bbe633cef4883ea9d.patch | git apply -v --directory=LoopAlgorithm
+          
+          # patch to update DIA to 7 hours
+          #curl https://github.com/oliverstory/LoopAlgorithm/commit/b546a5c173e540c19f944c0fd797440a0dbdf8c6.patch | git apply -v --directory=LoopAlgorithm
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
