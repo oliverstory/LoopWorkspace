@@ -201,7 +201,7 @@ jobs:
           #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
 
           # Re-order therapy settings screen:
-          #curl https://github.com/LoopKit/LoopKit/commit/a1d1360571944924bb2f1bf5e82b686a33227b2d.patch | git apply --directory=LoopKit -v --whitespace=fix
+          curl https://github.com/LoopKit/LoopKit/commit/a1d1360571944924bb2f1bf5e82b686a33227b2d.patch | git apply --directory=LoopKit -v --whitespace=fix
 
           # Submodule xxxxx patches:
 
